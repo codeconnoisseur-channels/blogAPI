@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: { type: DataTypes.UUID, primaryKey: true, defaultValue: uuidv4 },
       postId: { type: DataTypes.UUID, references: "postTables", key: "id" },
-      likeCount: DataTypes.INTEGER,
       email: { type: DataTypes.STRING, unique: true, allowNull: false },
     },
     {
