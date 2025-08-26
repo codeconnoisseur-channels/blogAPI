@@ -70,3 +70,21 @@ exports.deletePost = async (req, res) => {
     });
   }
 };
+
+exports.getAllAndLikes = async (req, res) => {
+  try {
+    const data = await postTable.findAll(
+      { model: likes, as: "Total number of likes" },
+      { model: comment, as: "Total number of comments" }
+    );
+    res.status(200).json({
+      message: "all info retrieved",
+      data,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: error.message,
+    });
+  }
+};

@@ -70,3 +70,20 @@ exports.deleteComment = async (req, res) => {
     });
   }
 };
+
+exports.getAllComment = async (req, res) => {
+  try {
+    const data = await comment.findAll({
+      include: "Total number of comments",
+    });
+    return res.status(200).json({
+      message: "all info retrieved",
+      data,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: error.message,
+    });
+  }
+};

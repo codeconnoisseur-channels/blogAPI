@@ -8,7 +8,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.likes, {
+        foreignKey: "postId",
+        as: "Total number of likes",
+      });
+      this.hasMany(models.comment, {
+        foreignKey: "postId",
+        as: "Total number of comments",
+      });
     }
   }
   const { v4: uuidv4 } = require("uuid");
